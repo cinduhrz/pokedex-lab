@@ -47,7 +47,15 @@ app.get('/pokemon', (req, res) => {
 
 // Show
 app.get('/pokemon/:id', (req, res) => {
-    res.send(req.params.id)
+    // convert ID to integer, and then subtract 1 so we can use it as index
+    const idInt = parseInt(req.params.id) - 1
+
+    res.render('pages/show.ejs', 
+    {
+        pokemon: pokemon[idInt],
+        types: pokemon[idInt].type,
+        stats: pokemon[idInt].stats
+    })
 })
 
 // ------------------------------//

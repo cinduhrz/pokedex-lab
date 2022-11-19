@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- import head -->
+<%- include('../partials/head.ejs') %>
+
+<body>
+
+    <!-- import header -->
+    <%- include('../partials/header.ejs') %>
+
+    <main>
+        <div class="pokemon-info">
+            <!-- render pokemon -->
+            <h2> <%= pokemon.name %> </h2>
+
+            <img alt="a photo of <%= pokemon.name %>" src="<%= pokemon.img %>" />
+
+            <ul>
+                <% for (type of types) { %>
+                    <li>
+                        <%= type %>
+                    </li>
+                <% } %>
+            </ul>
+
+            <div class="stats">
+                <h3>stats</h3>
+                hp: <%= stats.hp %> <br>
+                attack: <%= stats.attack %> <br>
+                defense: <%= stats.defense %>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>
