@@ -46,7 +46,9 @@ app.get('/pokemon', (req, res) => {
 // Edit
 
 // Show
-
+app.get('/pokemon/:id', (req, res) => {
+    res.send(req.params.id)
+})
 
 // ------------------------------//
 // -------- Turn Server On ------//
