@@ -5,6 +5,7 @@ require("dotenv").config() // load variables from .env
 const express = require("express") // import express
 const morgan = require("morgan") //import morgan
 const methodOverride = require("method-override") // import method-override
+const pokemon = require('./models/pokemon') // import DATA
 const PORT = process.env.PORT || 3000
 
 
@@ -24,9 +25,15 @@ app.use(morgan("dev")) // logging
 // ----------- Routes -----------//
 // ------------------------------//
 
-// Seed
-
 // Index
+app.get('/', (req, res) => {
+    // redirect root path to index route
+    res.redirect('/pokemon')
+})
+
+app.get('/pokemon', (req, res) => {
+    res.render('pages/index.ejs', {pokemon})
+})
 
 // New
 
