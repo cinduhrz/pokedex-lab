@@ -35,13 +35,17 @@ app.get('/pokemon', (req, res) => {
     res.render('pages/index.ejs', {pokemon})
 })
 
-// New
+// New - renders form for creating new pokemon
+app.get('/pokemon/new', (req, res) => {
+    res.render('pages/new.ejs')
+})
 
 // Delete
 
 // Update
 
-// Create
+// Create - turns form info into created object
+
 
 // Edit
 

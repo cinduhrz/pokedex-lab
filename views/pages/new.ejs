@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head.ejs') %>
+<body>
+    <%- include('../partials/header.ejs') %>
+
+    <main>
+        <div>
+            <form action="/pokemon" method="POST">
+                <fieldset>
+                    <legend>Create a New Pokemon:</legend>
+
+                    <label>
+                        id:<input type="text" name="id" placeholder="enter id">
+                    </label>
+
+                    <label>
+                        name:<input type="text" placeholder="enter name">
+                    </label>
+
+                    <label>
+                        img:<input type="text" placeholder="enter image url">
+                    </label>
+
+                    <label>
+                        type(s):<input type="text" name="type" placeholder="enter pokemon type(s)">
+                    </label>
+
+                    <br>
+
+                    <label> Stats:
+                        <fieldset>
+
+                            <label>
+                                hp:<input type="text" name="hp" placeholder="enter pokemon hp">
+                            </label>
+
+                            <label>
+                                attack:<input type="text" name="attack" placeholder="enter pokemon attack">
+                            </label>
+
+                            <label>
+                                defense::<input type="text" name="defense" placeholder="enter pokemon defense">
+                            </label>
+
+                            <label>
+                                sp. atk:<input type="text" name="spattack" placeholder="enter pokemon sp. atk">
+                            </label>
+
+                            <label>
+                                sp. def:<input type="text" name="spdefense" placeholder="enter pokemon sp. def">
+                            </label>
+
+                            <label>
+                                speed:<input type="text" name="speed" placeholder="enter pokemon speed">
+                            </label>
+
+                        </fieldset>
+                    </label>
+
+                </fieldset>
+
+                <input type="submit" value="Add Pokemon">
+
+            </form>
+
+            <a href="/pokemon"><button>Back</button></a>
+
+        </div>
+    </main>
+
+</body>
+</html>
