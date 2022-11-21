@@ -9,6 +9,7 @@ const pokemon = require('./models/pokemon') // import DATA
 const { urlencoded } = require("body-parser")
 const PORT = process.env.PORT || 3000
 const parseFormObj = require('./public/parseFormObj') // import function to parse form data
+const findPokemonById = require('./public/findPokemonById') // import function to find pokemon using its id
 
 // -------------------------------//
 // -- Create Express App Object --//
@@ -43,6 +44,14 @@ app.get('/pokemon/new', (req, res) => {
 })
 
 // Delete
+app.delete('/pokemon/:id', (req, res) => {
+    // splice item out of the array
+    // splice (index to start at, # of items to remove)
+
+    // id =/= index, so we must find the index again
+
+    pokemon.splice()
+})
 
 // Update
 
@@ -63,14 +72,7 @@ app.post('/pokemon', (req, res) => {
 
 // Show
 app.get('/pokemon/:id', (req, res) => {
-    // convert ID to integer
-    const idInt = parseInt(req.params.id)
-    console.log(idInt)
-
-    // find pokemon in array by it's ID
-    const clickedPokemon = pokemon.find((element) => parseInt(element.id) === (idInt))
-
-    console.log(clickedPokemon)
+    const clickedPokemon = findPokemonById(req.params.id, pokemon)
 
     res.render('pages/show.ejs', 
     {
