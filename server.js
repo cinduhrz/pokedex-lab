@@ -9,7 +9,7 @@ const pokemon = require('./models/pokemon') // import DATA
 const { urlencoded } = require("body-parser")
 const PORT = process.env.PORT || 3000
 const parseFormObj = require('./public/parseFormObj') // import function to parse form data
-const findPokemonById = require('./public/findPokemonById') // import function to find pokemon using its id
+const findPokemonIndexById = require('./public/findPokemonIndexById') // import function to find pokemon index using its id
 
 // -------------------------------//
 // -- Create Express App Object --//
@@ -22,6 +22,7 @@ const app = express()
 // ------------------------------//
 app.use(morgan("dev")) // logging
 app.use(express.urlencoded({extended:true})) // parse req.body
+app.use(methodOverride("_method")) // swaps the method with specified method in query if url has the query of ?_method=XXXXX :o
 
 
 // ------------------------------//
@@ -45,15 +46,33 @@ app.get('/pokemon/new', (req, res) => {
 
 // Delete
 app.delete('/pokemon/:id', (req, res) => {
+    // find pokemon index by id
+    const clickedPokemonIndex = findPokemonIndexById(req.params.id, pokemon)
+
     // splice item out of the array
     // splice (index to start at, # of items to remove)
+    pokemon.splice(clickedPokemonIndex, 1)
 
-    // id =/= index, so we must find the index again
-
-    pokemon.splice()
+    // redirect user back to index
+    res.redirect('/pokemon')
 })
 
 // Update
+app.put('/pokemon/:id', (req, res) => {
+    // find pokemon index by id
+    const clickedPokemonIndex = findPokemonIndexById(req.params.id, pokemon)
+    console.log(pokemon[clickedPokemonIndex])
+
+    // parse req.body data
+    const updatedPokemon = parseFormObj(req.body)
+
+    // update pokemon in array
+    pokemon[clickedPokemonIndex] = updatedPokemon
+    console.log(pokemon[clickedPokemonIndex])
+
+    // redirect user back to index
+    res.redirect('/pokemon')
+})
 
 // Create - turns form info into created object
 app.post('/pokemon', (req, res) => {
@@ -69,10 +88,29 @@ app.post('/pokemon', (req, res) => {
 })
 
 // Edit
+app.get('/pokemon/:id/edit', (req, res) => {
+    // find pokemon by id
+    const clickedPokemonIndex = findPokemonIndexById(req.params.id, pokemon)
+    const clickedPokemon = pokemon[clickedPokemonIndex]
+
+    // manipulate type array so that it'll render as separated by spaces instead of commas
+    console.log(clickedPokemon.type)
+    const stringifiedTypeArr = clickedPokemon.type.join(" ").toString()
+
+    res.render(
+        'pages/edit.ejs',
+        {
+            pokemon: clickedPokemon,
+            type: stringifiedTypeArr
+        }
+    )
+})
 
 // Show
 app.get('/pokemon/:id', (req, res) => {
-    const clickedPokemon = findPokemonById(req.params.id, pokemon)
+    // find pokemon by id
+    const clickedPokemonIndex = findPokemonIndexById(req.params.id, pokemon)
+    const clickedPokemon = pokemon[clickedPokemonIndex]
 
     res.render('pages/show.ejs', 
     {

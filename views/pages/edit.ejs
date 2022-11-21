@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head.ejs') %>
+<body>
+    <%- include('../partials/header.ejs') %>
+
+    <main>
+        <div>
+            <form action="/pokemon/<%= pokemon.id %>?_method=PUT" method="POST">
+                <fieldset>
+                    <legend>Edit <%= pokemon.name %></legend>
+
+                    <label>
+                        id:<input type="text" name="id" value="<%= pokemon.id %>">
+                    </label>
+
+                    <label>
+                        name:<input type="text" name="name" value="<%= pokemon.name %>">
+                    </label>
+
+                    <label>
+                        img:<input type="text"  name="img" value="<%= pokemon.img %>">
+                    </label>
+
+                    <label>
+                        type(s):
+                        <p>separate multiple types with a space</p>
+                        <input type="text" name="type" value="<%= type %>">
+                    </label>
+
+                    <br>
+
+                    <label> Stats:
+                        <fieldset>
+
+                            <label>
+                                hp:<input type="text" name="hp" value="<%= pokemon.stats.hp %>">
+                            </label>
+
+                            <label>
+                                attack:<input type="text" name="attack" value="<%= pokemon.stats.attack %>">
+                            </label>
+
+                            <label>
+                                defense:<input type="text" name="defense" value="<%= pokemon.stats.defense %>">
+                            </label>
+
+                            <label>
+                                sp. atk:<input type="text" name="spattack" value="<%= pokemon.stats.spattack %>">
+                            </label>
+
+                            <label>
+                                sp. def:<input type="text" name="spdefense" value="<%= pokemon.stats.spdefense %>">
+                            </label>
+
+                            <label>
+                                speed:<input type="text" name="speed" value="<%= pokemon.stats.speed %>">
+                            </label>
+
+                        </fieldset>
+                    </label>
+
+                </fieldset>
+
+                <input type="submit" value="Update <%= pokemon.name %>">
+
+            </form>
+
+            <a href="/pokemon"><button>Back</button></a>
+
+        </div>
+    </main>
+
+</body>
+</html>
