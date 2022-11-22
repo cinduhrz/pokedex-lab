@@ -8,13 +8,9 @@
 
     <!-- import header -->
     <%- include('../partials/header.ejs') %>
-
-    <nav>
-        <a href="/pokemon/new"><button>Add a Pokemon</button></a>
-    </nav>
-
+    
     <main>  
-        <div class="display">
+        <div class="index-pokemon-gallery">
             <!-- render pokemon names and images -->
             <% for (pokemon of pokemon) { %>
                 <a href="/pokemon/<%= pokemon.id %>">

@@ -1,0 +1,18 @@
+* {
+    box-sizing: border-box;
+}
+
+.index-pokemon-gallery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.index-pokemon-gallery img {
+    width: 100%;
+    max-width: 200px;
+}
+
+.in-nav {
+    display: inline-block;
+}

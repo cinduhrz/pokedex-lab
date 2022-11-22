@@ -23,6 +23,7 @@ const app = express()
 app.use(morgan("dev")) // logging
 app.use(express.urlencoded({extended:true})) // parse req.body
 app.use(methodOverride("_method")) // swaps the method with specified method in query if url has the query of ?_method=XXXXX :o
+app.use("/static", express.static("public")) // serve static files in public folder via static url
 
 
 // ------------------------------//
