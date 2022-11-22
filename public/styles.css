@@ -1,6 +1,6 @@
 * {
     box-sizing: border-box;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     font-family: sans-serif;
 }
 
@@ -49,6 +49,10 @@ body {
     align-items: center;
 }
 
+button {
+    margin: 5px;
+}
+
 button:hover {
     cursor: pointer;
 }
@@ -57,10 +61,17 @@ a:hover {
     cursor: pointer;
 }
 
+input[type="submit"] {
+    margin: 5px;
+}
+
 input[type="submit"]:hover {
     cursor: pointer;
 }
 
+input[type="text"] {
+    margin: 10px;
+}
 
 
 @media (max-width: 1000px) {
