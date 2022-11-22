@@ -6,15 +6,28 @@
 
 nav {
     background-color: #e66966;
-    height: 6rem;
+    height: 8rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.in-nav {
-    display: inline-block;
+#title {
+    font-size: 5rem;
+    margin: 5%;
+}
+
+nav button {
+    margin: 10%;
+}
+
+body {
+    background-color: #a2d7d5;
 }
 
 .index-pokemon-gallery {
-    margin: 10%;
+    margin: 5%;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
 }
@@ -22,7 +35,7 @@ nav {
 .pokemon-card {
     padding: 5%;
     margin: 1rem;
-    background-color: skyblue;
+    background-color: rgb(248, 246, 243);
     border-radius: 1rem;
 }
 
@@ -35,6 +48,20 @@ nav {
     height: 100%;
     align-items: center;
 }
+
+button:hover {
+    cursor: pointer;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    cursor: pointer;
+}
+
+
 
 @media (max-width: 1000px) {
     .index-pokemon-gallery {
