@@ -8,15 +8,26 @@
 
     <!-- import header -->
     <%- include('../partials/header.ejs') %>
-    
+
     <main>  
         <div class="index-pokemon-gallery">
             <!-- render pokemon names and images -->
             <% for (pokemon of pokemon) { %>
-                <a href="/pokemon/<%= pokemon.id %>">
-                    <h3> <%= pokemon.name %> </h3>
-                    <img alt="a photo of <%= pokemon.name %>" src="<%= pokemon.img %>" />
-                </a>
+                <div class="pokemon-card">
+                    <a href="/pokemon/<%= pokemon.id %>">
+                        <h3> <%= pokemon.name %> </h3>
+                        <div class="img-area">
+                            <img alt="a photo of <%= pokemon.name %>" src="<%= pokemon.img %>" />
+                        </div>
+                    </a>
+
+                    <a href="/pokemon/<%= pokemon.id %>/edit"><button>Edit</button></a>
+
+                    <form action="/pokemon/<%= pokemon.id %>?_method=DELETE" method="POST">
+                        <input type="submit" value="Delete">
+                    </form>
+
+                </div>
             <% } %>
         </div>
     </main>

@@ -1,18 +1,43 @@
 * {
     box-sizing: border-box;
+    border: 1px solid red;
+    font-family: sans-serif;
 }
 
-.index-pokemon-gallery {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.index-pokemon-gallery img {
-    width: 100%;
-    max-width: 200px;
+nav {
+    background-color: #e66966;
+    height: 6rem;
 }
 
 .in-nav {
     display: inline-block;
+}
+
+.index-pokemon-gallery {
+    margin: 10%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.pokemon-card {
+    padding: 5%;
+    margin: 1rem;
+    background-color: skyblue;
+    border-radius: 1rem;
+}
+
+.img-area {
+    display: flex;
+}
+
+.index-pokemon-gallery img {
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+
+@media (max-width: 1000px) {
+    .index-pokemon-gallery {
+        margin: 0;
+    }
 }
